@@ -1491,31 +1491,55 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;gpio.c: 11: void main(void) {
 [e :U _main ]
 [f ]
-[; ;gpio.c: 12: asm("BSF STATUS,6");
-"12
-[; <" BSF STATUS,6 ;# ">
-[; ;gpio.c: 13: asm("BSF STATUS,5");
+[; ;gpio.c: 13: asm("BSF STATUS,6");
 "13
-[; <" BSF STATUS,5 ;# ">
-[; ;gpio.c: 14: asm("BCF ANSELH,4");
+[; <" BSF STATUS,6 ;# ">
+[; ;gpio.c: 14: asm("BSF STATUS,5");
 "14
-[; <" BCF ANSELH,4 ;# ">
-[; ;gpio.c: 15: asm("BCF STATUS,6");
+[; <" BSF STATUS,5 ;# ">
+[; ;gpio.c: 15: asm("BCF ANSELH,4");
 "15
-[; <" BCF STATUS,6 ;# ">
-[; ;gpio.c: 16: asm("BSF TRISB,0");
+[; <" BCF ANSELH,4 ;# ">
+[; ;gpio.c: 16: asm("BCF STATUS,6");
 "16
-[; <" BSF TRISB,0 ;# ">
-[; ;gpio.c: 17: asm("BCF TRISD,0");
+[; <" BCF STATUS,6 ;# ">
+[; ;gpio.c: 17: asm("BSF TRISB,0");
 "17
-[; <" BCF TRISD,0 ;# ">
-[; ;gpio.c: 18: asm("BCF STATUS,5");
+[; <" BSF TRISB,0 ;# ">
+[; ;gpio.c: 18: asm("BCF TRISD,4");
 "18
+[; <" BCF TRISD,4 ;# ">
+[; ;gpio.c: 19: asm("BCF STATUS,5");
+"19
 [; <" BCF STATUS,5 ;# ">
-[; ;gpio.c: 20: return;
-"20
-[e $UE 139  ]
-[; ;gpio.c: 21: }
+[; ;gpio.c: 21: asm("LOOP:");
 "21
+[; <" LOOP: ;# ">
+[; ;gpio.c: 22: asm("BTFSC PORTB,0");
+"22
+[; <" BTFSC PORTB,0 ;# ">
+[; ;gpio.c: 23: asm("GOTO SET_HIGH");
+"23
+[; <" GOTO SET_HIGH ;# ">
+[; ;gpio.c: 24: asm("BCF PORTD,4");
+"24
+[; <" BCF PORTD,4 ;# ">
+[; ;gpio.c: 25: asm("GOTO LOOP");
+"25
+[; <" GOTO LOOP ;# ">
+[; ;gpio.c: 27: asm("SET_HIGH:");
+"27
+[; <" SET_HIGH: ;# ">
+[; ;gpio.c: 28: asm("BSF PORTD,4");
+"28
+[; <" BSF PORTD,4 ;# ">
+[; ;gpio.c: 29: asm("GOTO LOOP");
+"29
+[; <" GOTO LOOP ;# ">
+[; ;gpio.c: 32: return;
+"32
+[e $UE 139  ]
+[; ;gpio.c: 33: }
+"33
 [e :UE 139 ]
 }

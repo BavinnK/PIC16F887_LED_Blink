@@ -2090,13 +2090,25 @@ extern __bit __timeout;
 
 # 11 "gpio.c"
 void main(void) {
+
 asm("BSF STATUS,6");
 asm("BSF STATUS,5");
 asm("BCF ANSELH,4");
 asm("BCF STATUS,6");
 asm("BSF TRISB,0");
-asm("BCF TRISD,0");
+asm("BCF TRISD,4");
 asm("BCF STATUS,5");
+
+asm("LOOP:");
+asm("BTFSC PORTB,0");
+asm("GOTO SET_HIGH");
+asm("BCF PORTD,4");
+asm("GOTO LOOP");
+
+asm("SET_HIGH:");
+asm("BSF PORTD,4");
+asm("GOTO LOOP");
+
 
 return;
 }

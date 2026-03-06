@@ -13,8 +13,8 @@
 %PSECTS
 $dist/default/production\cc_pic887_gpio.X.production.obj
 cinit CODE 0 7FC 7FC 4 2
-maintext CODE 0 7F2 7F2 A 2
-$C:\Users\Bavin\AppData\Local\Temp\s7nk.obj
+maintext CODE 0 7EC 7EC 10 2
+$C:\Users\Bavin\AppData\Local\Temp\sa74.obj
 end_init CODE 0 0 0 3 2
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
@@ -30,13 +30,13 @@ BANK0 20-6F 1
 BANK1 A0-EF 1
 BANK2 110-16F 1
 BANK3 190-1EF 1
-CONST 3-7F1 2
+CONST 3-7EB 2
 CONST 800-1FFF 2
-ENTRY 3-7F1 2
+ENTRY 3-7EB 2
 ENTRY 800-1FFF 2
 IDLOC 2000-2003 2
 STACK 110-16F 1
-CODE 3-7F1 2
+CODE 3-7EB 2
 CODE 800-1FFF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
@@ -45,9 +45,9 @@ SFR3 180-18F 1
 COMMON 70-7D 1
 CONFIG 2007-2008 2
 EEDATA 2100-21FF 2
-STRCODE 3-7F1 2
+STRCODE 3-7EB 2
 STRCODE 800-1FFF 2
-STRING 3-7F1 2
+STRING 3-7EB 2
 STRING 800-1FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
@@ -63,20 +63,28 @@ STRING 800-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\cc_pic887_gpio.X.production.obj
-7FC cinit CODE >204:C:\Users\Bavin\AppData\Local\Temp\s7nk.
-7FC cinit CODE >207:C:\Users\Bavin\AppData\Local\Temp\s7nk.
-7FC cinit CODE >213:C:\Users\Bavin\AppData\Local\Temp\s7nk.
-7FC cinit CODE >215:C:\Users\Bavin\AppData\Local\Temp\s7nk.
-7FD cinit CODE >216:C:\Users\Bavin\AppData\Local\Temp\s7nk.
-7F2 maintext CODE >11:C:\Users\Bavin\MPLABXProjects\cc_pic887_gpio.X\gpio.c
-7F2 maintext CODE >12:C:\Users\Bavin\MPLABXProjects\cc_pic887_gpio.X\gpio.c
-7F3 maintext CODE >13:C:\Users\Bavin\MPLABXProjects\cc_pic887_gpio.X\gpio.c
-7F4 maintext CODE >14:C:\Users\Bavin\MPLABXProjects\cc_pic887_gpio.X\gpio.c
-7F5 maintext CODE >15:C:\Users\Bavin\MPLABXProjects\cc_pic887_gpio.X\gpio.c
-7F6 maintext CODE >16:C:\Users\Bavin\MPLABXProjects\cc_pic887_gpio.X\gpio.c
-7F7 maintext CODE >17:C:\Users\Bavin\MPLABXProjects\cc_pic887_gpio.X\gpio.c
-7F8 maintext CODE >18:C:\Users\Bavin\MPLABXProjects\cc_pic887_gpio.X\gpio.c
-7F9 maintext CODE >21:C:\Users\Bavin\MPLABXProjects\cc_pic887_gpio.X\gpio.c
+7FC cinit CODE >204:C:\Users\Bavin\AppData\Local\Temp\sa74.
+7FC cinit CODE >207:C:\Users\Bavin\AppData\Local\Temp\sa74.
+7FC cinit CODE >213:C:\Users\Bavin\AppData\Local\Temp\sa74.
+7FC cinit CODE >215:C:\Users\Bavin\AppData\Local\Temp\sa74.
+7FD cinit CODE >216:C:\Users\Bavin\AppData\Local\Temp\sa74.
+7EC maintext CODE >11:C:\Users\Bavin\MPLABXProjects\cc_pic887_gpio.X\gpio.c
+7EC maintext CODE >13:C:\Users\Bavin\MPLABXProjects\cc_pic887_gpio.X\gpio.c
+7ED maintext CODE >14:C:\Users\Bavin\MPLABXProjects\cc_pic887_gpio.X\gpio.c
+7EE maintext CODE >15:C:\Users\Bavin\MPLABXProjects\cc_pic887_gpio.X\gpio.c
+7EF maintext CODE >16:C:\Users\Bavin\MPLABXProjects\cc_pic887_gpio.X\gpio.c
+7F0 maintext CODE >17:C:\Users\Bavin\MPLABXProjects\cc_pic887_gpio.X\gpio.c
+7F1 maintext CODE >18:C:\Users\Bavin\MPLABXProjects\cc_pic887_gpio.X\gpio.c
+7F2 maintext CODE >19:C:\Users\Bavin\MPLABXProjects\cc_pic887_gpio.X\gpio.c
+7F3 maintext CODE >21:C:\Users\Bavin\MPLABXProjects\cc_pic887_gpio.X\gpio.c
+7F3 maintext CODE >22:C:\Users\Bavin\MPLABXProjects\cc_pic887_gpio.X\gpio.c
+7F4 maintext CODE >23:C:\Users\Bavin\MPLABXProjects\cc_pic887_gpio.X\gpio.c
+7F5 maintext CODE >24:C:\Users\Bavin\MPLABXProjects\cc_pic887_gpio.X\gpio.c
+7F6 maintext CODE >25:C:\Users\Bavin\MPLABXProjects\cc_pic887_gpio.X\gpio.c
+7F7 maintext CODE >27:C:\Users\Bavin\MPLABXProjects\cc_pic887_gpio.X\gpio.c
+7F7 maintext CODE >28:C:\Users\Bavin\MPLABXProjects\cc_pic887_gpio.X\gpio.c
+7F8 maintext CODE >29:C:\Users\Bavin\MPLABXProjects\cc_pic887_gpio.X\gpio.c
+7F9 maintext CODE >33:C:\Users\Bavin\MPLABXProjects\cc_pic887_gpio.X\gpio.c
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -100,11 +108,11 @@ ltemp1 82 0 ABS 0 - dist/default/production\cc_pic887_gpio.X.production.obj
 ltemp2 86 0 ABS 0 - dist/default/production\cc_pic887_gpio.X.production.obj
 ltemp3 80 0 ABS 0 - dist/default/production\cc_pic887_gpio.X.production.obj
 __Hstrings 0 0 ABS 0 strings -
-___sp 0 0 STACK 2 stack C:\Users\Bavin\AppData\Local\Temp\s7nk.obj
-_main FE4 0 CODE 0 maintext dist/default/production\cc_pic887_gpio.X.production.obj
+___sp 0 0 STACK 2 stack C:\Users\Bavin\AppData\Local\Temp\sa74.obj
+_main FD8 0 CODE 0 maintext dist/default/production\cc_pic887_gpio.X.production.obj
 btemp 7E 0 ABS 0 - dist/default/production\cc_pic887_gpio.X.production.obj
 ltemp 7E 0 ABS 0 - dist/default/production\cc_pic887_gpio.X.production.obj
-start 0 0 CODE 0 init C:\Users\Bavin\AppData\Local\Temp\s7nk.obj
+start 0 0 CODE 0 init C:\Users\Bavin\AppData\Local\Temp\sa74.obj
 ttemp 7E 0 ABS 0 - dist/default/production\cc_pic887_gpio.X.production.obj
 wtemp 7E 0 ABS 0 - dist/default/production\cc_pic887_gpio.X.production.obj
 __size_of_main 0 0 ABS 0 - dist/default/production\cc_pic887_gpio.X.production.obj
@@ -114,12 +122,12 @@ ttemp1 81 0 ABS 0 - dist/default/production\cc_pic887_gpio.X.production.obj
 ttemp2 84 0 ABS 0 - dist/default/production\cc_pic887_gpio.X.production.obj
 ttemp3 87 0 ABS 0 - dist/default/production\cc_pic887_gpio.X.production.obj
 ttemp4 7F 0 ABS 0 - dist/default/production\cc_pic887_gpio.X.production.obj
-intlevel0 0 0 CODE 0 functab C:\Users\Bavin\AppData\Local\Temp\s7nk.obj
-intlevel1 0 0 CODE 0 functab C:\Users\Bavin\AppData\Local\Temp\s7nk.obj
-intlevel2 0 0 CODE 0 functab C:\Users\Bavin\AppData\Local\Temp\s7nk.obj
-intlevel3 0 0 CODE 0 functab C:\Users\Bavin\AppData\Local\Temp\s7nk.obj
-intlevel4 0 0 CODE 0 functab C:\Users\Bavin\AppData\Local\Temp\s7nk.obj
-intlevel5 0 0 CODE 0 functab C:\Users\Bavin\AppData\Local\Temp\s7nk.obj
+intlevel0 0 0 CODE 0 functab C:\Users\Bavin\AppData\Local\Temp\sa74.obj
+intlevel1 0 0 CODE 0 functab C:\Users\Bavin\AppData\Local\Temp\sa74.obj
+intlevel2 0 0 CODE 0 functab C:\Users\Bavin\AppData\Local\Temp\sa74.obj
+intlevel3 0 0 CODE 0 functab C:\Users\Bavin\AppData\Local\Temp\sa74.obj
+intlevel4 0 0 CODE 0 functab C:\Users\Bavin\AppData\Local\Temp\sa74.obj
+intlevel5 0 0 CODE 0 functab C:\Users\Bavin\AppData\Local\Temp\sa74.obj
 wtemp0 7E 0 ABS 0 - dist/default/production\cc_pic887_gpio.X.production.obj
 wtemp1 80 0 ABS 0 - dist/default/production\cc_pic887_gpio.X.production.obj
 wtemp2 82 0 ABS 0 - dist/default/production\cc_pic887_gpio.X.production.obj
@@ -131,7 +139,7 @@ __Hfunctab 0 0 CODE 0 functab -
 __Hclrtext 0 0 ABS 0 clrtext -
 __Lmaintext 0 0 ABS 0 maintext -
 start_initialization FF8 0 CODE 0 cinit dist/default/production\cc_pic887_gpio.X.production.obj
-___int_sp 0 0 STACK 2 stack C:\Users\Bavin\AppData\Local\Temp\s7nk.obj
+___int_sp 0 0 STACK 2 stack C:\Users\Bavin\AppData\Local\Temp\sa74.obj
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -171,12 +179,12 @@ __S1 0 0 ABS 0 - -
 __S2 0 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
 __Lintentry 0 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\Bavin\AppData\Local\Temp\s7nk.obj
-__pmaintext FE4 0 CODE 0 maintext dist/default/production\cc_pic887_gpio.X.production.obj
+reset_vec 0 0 CODE 0 reset_vec C:\Users\Bavin\AppData\Local\Temp\sa74.obj
+__pmaintext FD8 0 CODE 0 maintext dist/default/production\cc_pic887_gpio.X.production.obj
 __Lcommon 0 0 ABS 0 common -
 __Lconfig 0 0 CONFIG 0 config -
-stackhi 0 0 ABS 0 - C:\Users\Bavin\AppData\Local\Temp\s7nk.obj
-stacklo 0 0 ABS 0 - C:\Users\Bavin\AppData\Local\Temp\s7nk.obj
+stackhi 0 0 ABS 0 - C:\Users\Bavin\AppData\Local\Temp\sa74.obj
+stacklo 0 0 ABS 0 - C:\Users\Bavin\AppData\Local\Temp\sa74.obj
 __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
 __Lspace_2 0 0 ABS 0 - -
@@ -225,5 +233,5 @@ __initialization FF8 0 CODE 0 cinit dist/default/production\cc_pic887_gpio.X.pro
 # All other numeric quantities are in decimal.
 %SEGMENTS
 cinit 0 7FC FF8 4 2
-maintext 0 7F2 FE4 A 2
+maintext 0 7EC FD8 10 2
 reset_vec 0 0 0 3 2
