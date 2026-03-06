@@ -10,24 +10,35 @@
 
 void main(void) {
     
-    asm("BSF STATUS,6");//RP1=1
-    asm("BSF STATUS,5");//RP0=1 now we are in bank3
-    asm("BCF ANSELH,4");//make RB0 to digital I/O
-    asm("BCF STATUS,6");//RP1=0 now we are in bank1
-    asm("BSF TRISB,0");//RB0 is input
-    asm("BCF TRISD,4");//RD0 is output
-    asm("BCF STATUS,5");//RP0=0 now we are in bank0
+#asm
+    CBLOCK 0x20 
+        COUNTER  
+    ENDC
+  BSF STATUS,6
+  BSF STATUS,5
+  BCF ANSELH,4
+  BCF STATUS,6
+  BSF TRISB,0
+  CLRF TRISD
+  BCF STATUS,5
+  CLRF 0x20
+
+  LOOP:
+  BTFSC PORTB,0
+  GOTO INC_CNTR
+  GOTO LOOP
+
+  INC_CNTR:
+  INCF 0x20h,1
+  MOVF 0x20h,0
+  MOVWF PORTD
+
+  WAIT:
+  BTFSS PORTB,0
+  GOTO WAIT
+  GOTO LOOP  
     
-    asm("LOOP:");
-    asm("BTFSC PORTB,0");//is the button pressed? 
-    asm("GOTO SET_HIGH");//if yes then jump to SET_HIGH if not skip next instruction
-    asm("BCF PORTD,4");//set RD0 to low
-    asm("GOTO LOOP");//go back to loop
-    
-    asm("SET_HIGH:");
-    asm("BSF PORTD,4");//set RD0 to high
-    asm("GOTO LOOP");
-    
+#endasm
     
     return;
 }

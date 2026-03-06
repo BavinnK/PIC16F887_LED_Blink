@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC LITE Macro Assembler V1.36 build -262312587 
-                                                                                               Fri Mar 06 20:28:36 2026
+                                                                                               Fri Mar 06 21:38:56 2026
 
 Microchip Technology Omniscient Code Generator v1.36 (Free mode) build 201601150325
      1                           	processor	16F887
@@ -91,26 +91,26 @@ Microchip Technology Omniscient Code Generator v1.36 (Free mode) build 201601150
     85  018D                     	;# 
     86                           
     87                           	psect	cinit
-    88  07FC                     start_initialization:	
+    88  0000'                    start_initialization:	
     89                           ; #config settings
     90                           
-    91  07FC                     __initialization:	
-    92  07FC                     end_of_initialization:	
+    91  0000'                    __initialization:	
+    92  0000'                    end_of_initialization:	
     93                           ;End of C runtime variable initialization code
     94                           
-    95  07FC                     __end_of__initialization:	
-    96  07FC  0183               	clrf	3
-    97  07FD  120A  118A  2FEC   	ljmp	_main	;jump to C main() function
+    95  0000'                    __end_of__initialization:	
+    96  0000' 0183               	clrf	3
+    97  0001' 120A' 118A' 2800'  	ljmp	_main	;jump to C main() function
     98                           
     99                           	psect	cstackCOMMON
-   100  0000                     __pcstackCOMMON:	
-   101  0000                     ?_main:	
-   102  0000                     ??_main:	
+   100  0000'                    __pcstackCOMMON:	
+   101  0000'                    ?_main:	
+   102  0000'                    ??_main:	
    103                           ; 1 bytes @ 0x0
    104                           
    105                           
    106                           	psect	maintext
-   107  07EC                     __pmaintext:	
+   107  0000'                    __pmaintext:	
    108                           ; 1 bytes @ 0x0
    109 ;;
    110 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
@@ -145,53 +145,65 @@ Microchip Technology Omniscient Code Generator v1.36 (Free mode) build 201601150
    139                           
    140                           
    141                           ;psect for function _main
-   142  07EC                     _main:	
-   143                           
+   142  0000'                    _main:	
+   143  0000'                    CBLOCK:	
    144                           ;incstack = 0
    145                           ; Regs used in _main: []
-   146  07EC  1703               	bsf	3,6	;# 
-   147  07ED  1683               	bsf	3,5	;# 
-   148  07EE  1209               	bcf	393,4	;# 
-   149  07EF  1303               	bcf	3,6	;# 
-   150  07F0  1406               	bsf	134,0	;# 
-   151  07F1  1208               	bcf	136,4	;# 
-   152  07F2  1283               	bcf	3,5	;# 
-   153  07F3                     LOOP:	
-   154                           
-   155                           ;# 
-   156  07F3  1806               	btfsc	6,0	;# 
-   157  07F4  2FF7               	goto	SET_HIGH	;# 
-   158  07F5  1208               	bcf	8,4	;# 
-   159  07F6  2FF3               	goto	LOOP	;# 
-   160  07F7                     SET_HIGH:	
-   161                           
-   162                           ;# 
-   163  07F7  1608               	bsf	8,4	;# 
-   164  07F8  2FF3               	goto	LOOP	;# 
-   165                           
-   166                           ;gpio.c: 32: return;
-   167  07F9  120A  118A  2800   	ljmp	start
-   168  07FC                     __end_of_main:	
-   169  007E                     btemp	set	126	;btemp
-   170  007E                     wtemp	set	126
-   171  007E                     wtemp0	set	126
-   172  0080                     wtemp1	set	128
-   173  0082                     wtemp2	set	130
-   174  0084                     wtemp3	set	132
-   175  0086                     wtemp4	set	134
-   176  0088                     wtemp5	set	136
-   177  007F                     wtemp6	set	127
-   178  007E                     ttemp	set	126
-   179  007E                     ttemp0	set	126
-   180  0081                     ttemp1	set	129
-   181  0084                     ttemp2	set	132
-   182  0087                     ttemp3	set	135
-   183  007F                     ttemp4	set	127
-   184  007E                     ltemp	set	126
-   185  007E                     ltemp0	set	126
-   186  0082                     ltemp1	set	130
-   187  0086                     ltemp2	set	134
-   188  0080                     ltemp3	set	128
+   146                           
+   147  0000'                    COUNTER:	
+   148  0000'                    ENDC:	
+   149                           ;# 
+   150                           
+   151                           
+   152                           ;# 
+   153  0000' 1703               	bsf	3,6	;# 
+   154  0001' 1683               	bsf	3,5	;# 
+   155  0002' 1209               	bcf	393,4	;# 
+   156  0003' 1303               	bcf	3,6	;# 
+   157  0004' 1406               	bsf	134,0	;# 
+   158  0005' 0188               	clrf	136	;# 
+   159  0006' 1283               	bcf	3,5	;# 
+   160  0007' 01A0               	clrf	32	;# 
+   161  0008'                    LOOP:	
+   162                           
+   163                           ;# 
+   164  0008' 1806               	btfsc	6,0	;# 
+   165  0009' 2800'              	goto	INC_CNTR	;# 
+   166  000A' 2800'              	goto	LOOP	;# 
+   167  000B'                    INC_CNTR:	
+   168                           
+   169                           ;# 
+   170  000B' 0088               	movwf	8	;# 
+   171  000C'                    WAIT:	
+   172                           
+   173                           ;# 
+   174  000C' 1C06               	btfss	6,0	;# 
+   175  000D' 2800'              	goto	WAIT	;# 
+   176  000E' 2800'              	goto	LOOP	;# 
+   177                           
+   178                           ;gpio.c: 43: return;
+   179  000F' 120A' 118A' 2800'  	ljmp	start
+   180  0012'                    __end_of_main:	
+   181  007E                     btemp	set	126	;btemp
+   182  007E                     wtemp	set	126
+   183  007E                     wtemp0	set	126
+   184  0080                     wtemp1	set	128
+   185  0082                     wtemp2	set	130
+   186  0084                     wtemp3	set	132
+   187  0086                     wtemp4	set	134
+   188  0088                     wtemp5	set	136
+   189  007F                     wtemp6	set	127
+   190  007E                     ttemp	set	126
+   191  007E                     ttemp0	set	126
+   192  0081                     ttemp1	set	129
+   193  0084                     ttemp2	set	132
+   194  0087                     ttemp3	set	135
+   195  007F                     ttemp4	set	127
+   196  007E                     ltemp	set	126
+   197  007E                     ltemp0	set	126
+   198  0082                     ltemp1	set	130
+   199  0086                     ltemp2	set	134
+   200  0080                     ltemp3	set	128
 
 
 Data Sizes:
@@ -277,19 +289,21 @@ DATA                 0      0       0      12        0.0%
 
 
 Microchip Technology PIC Macro Assembler V1.36 build -262312587 
-Symbol Table                                                                                   Fri Mar 06 20:28:36 2026
+Symbol Table                                                                                   Fri Mar 06 21:38:56 2026
 
-                    LOOP 07F3                     PORTB 0006                     PORTD 0008  
-                   TRISB 0086                     TRISD 0088                     _main 07EC  
-                   btemp 007E                     ltemp 007E                     start 0000  
-                   ttemp 007E                     wtemp 007E                    ANSELH 0189  
+                    ENDC 0000                      LOOP 0008                      WAIT 000C  
+                   PORTB 0006                     PORTD 0008                     TRISB 0086  
+                   TRISD 0088                     _main 0000                     btemp 007E  
+                   ltemp 007E                     start 0000*                    ttemp 007E  
+                   wtemp 007E                    CBLOCK 0000                    ANSELH 0189  
                   STATUS 0003                    ?_main 0000                    ltemp0 007E  
                   ltemp1 0082                    ltemp2 0086                    ltemp3 0080  
                   ttemp0 007E                    ttemp1 0081                    ttemp2 0084  
                   ttemp3 0087                    ttemp4 007F                    status 0003  
                   wtemp0 007E                    wtemp1 0080                    wtemp2 0082  
                   wtemp3 0084                    wtemp4 0086                    wtemp5 0088  
-                  wtemp6 007F          __initialization 07FC             __end_of_main 07FC  
-                 ??_main 0000  __end_of__initialization 07FC           __pcstackCOMMON 0000  
-             __pmaintext 07EC                  SET_HIGH 07F7     end_of_initialization 07FC  
-    start_initialization 07FC                ___latbits 0002            __size_of_main 0010  
+                  wtemp6 007F          __initialization 0000             __end_of_main 0012  
+                 ??_main 0000                   COUNTER 0000  __end_of__initialization 0000  
+         __pcstackCOMMON 0000                  INC_CNTR 000B               __pmaintext 0000  
+   end_of_initialization 0000      start_initialization 0000                ___latbits 0002  
+          __size_of_main 0012  

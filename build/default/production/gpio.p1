@@ -1491,55 +1491,60 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;gpio.c: 11: void main(void) {
 [e :U _main ]
 [f ]
-[; ;gpio.c: 13: asm("BSF STATUS,6");
-"13
-[; <" BSF STATUS,6 ;# ">
-[; ;gpio.c: 14: asm("BSF STATUS,5");
 "14
-[; <" BSF STATUS,5 ;# ">
-[; ;gpio.c: 15: asm("BCF ANSELH,4");
+[; <"     CBLOCK 0x20 ;# ">
 "15
-[; <" BCF ANSELH,4 ;# ">
-[; ;gpio.c: 16: asm("BCF STATUS,6");
+[; <"         COUNTER ;# ">
 "16
-[; <" BCF STATUS,6 ;# ">
-[; ;gpio.c: 17: asm("BSF TRISB,0");
+[; <"     ENDC ;# ">
 "17
-[; <" BSF TRISB,0 ;# ">
-[; ;gpio.c: 18: asm("BCF TRISD,4");
+[; <"   BSF STATUS,6 ;# ">
 "18
-[; <" BCF TRISD,4 ;# ">
-[; ;gpio.c: 19: asm("BCF STATUS,5");
+[; <"   BSF STATUS,5 ;# ">
 "19
-[; <" BCF STATUS,5 ;# ">
-[; ;gpio.c: 21: asm("LOOP:");
+[; <"   BCF ANSELH,4 ;# ">
+"20
+[; <"   BCF STATUS,6 ;# ">
 "21
-[; <" LOOP: ;# ">
-[; ;gpio.c: 22: asm("BTFSC PORTB,0");
+[; <"   BSF TRISB,0 ;# ">
 "22
-[; <" BTFSC PORTB,0 ;# ">
-[; ;gpio.c: 23: asm("GOTO SET_HIGH");
+[; <"   CLRF TRISD ;# ">
 "23
-[; <" GOTO SET_HIGH ;# ">
-[; ;gpio.c: 24: asm("BCF PORTD,4");
+[; <"   BCF STATUS,5 ;# ">
 "24
-[; <" BCF PORTD,4 ;# ">
-[; ;gpio.c: 25: asm("GOTO LOOP");
+[; <"   CLRF 0x20 ;# ">
 "25
-[; <" GOTO LOOP ;# ">
-[; ;gpio.c: 27: asm("SET_HIGH:");
+"26
+[; <"   LOOP: ;# ">
 "27
-[; <" SET_HIGH: ;# ">
-[; ;gpio.c: 28: asm("BSF PORTD,4");
+[; <"   BTFSC PORTB,0 ;# ">
 "28
-[; <" BSF PORTD,4 ;# ">
-[; ;gpio.c: 29: asm("GOTO LOOP");
+[; <"   GOTO INC_CNTR ;# ">
 "29
-[; <" GOTO LOOP ;# ">
-[; ;gpio.c: 32: return;
+[; <"   GOTO LOOP ;# ">
+"30
+"31
+[; <"   INC_CNTR: ;# ">
 "32
-[e $UE 139  ]
-[; ;gpio.c: 33: }
+[; <"   INCF 0x20h,1 ;# ">
 "33
+[; <"   MOVF 0x20h,0 ;# ">
+"34
+[; <"   MOVWF PORTD ;# ">
+"35
+"36
+[; <"   WAIT: ;# ">
+"37
+[; <"   BTFSS PORTB,0 ;# ">
+"38
+[; <"   GOTO WAIT ;# ">
+"39
+[; <"   GOTO LOOP ;# ">
+"40
+[; ;gpio.c: 43: return;
+"43
+[e $UE 139  ]
+[; ;gpio.c: 44: }
+"44
 [e :UE 139 ]
 }
