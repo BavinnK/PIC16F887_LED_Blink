@@ -1514,37 +1514,39 @@ Version 3.2 HI-TECH Software Intermediate Code
 "24
 [; <"   CLRF 0x20 ;# ">
 "25
+[; <"   CLRF PORTD ;# ">
 "26
-[; <"   LOOP: ;# ">
 "27
-[; <"   BTFSC PORTB,0 ;# ">
+[; <"   LOOP: ;# ">
 "28
-[; <"   GOTO INC_CNTR ;# ">
+[; <"   BTFSC PORTB,0 ;# ">
 "29
-[; <"   GOTO LOOP ;# ">
+[; <"   GOTO INC_CNTR ;# ">
 "30
-"31
-[; <"   INC_CNTR: ;# ">
-"32
-[; <"   INCF 0x20,F ;# ">
-"33
-[; <"   MOVF 0x20,W ;# ">
-"34
-[; <"   MOVWF PORTD ;# ">
-"35
-"36
-[; <"   WAIT: ;# ">
-"37
-[; <"   BTFSS PORTB,0 ;# ">
-"38
-[; <"   GOTO WAIT ;# ">
-"39
 [; <"   GOTO LOOP ;# ">
+"31
+"32
+[; <"   INC_CNTR: ;# ">
+"33
+[; <"   INCF 0x20,F ;# ">
+"34
+[; <"   MOVF 0x20,W ;# ">
+"35
+[; <"   MOVWF PORTD ;# ">
+"36
+"37
+[; <"   WAIT: ;# ">
+"38
+[; <"   BTFSC PORTB,0 ;# ">
+"39
+[; <"   GOTO WAIT ;# ">
 "40
-[; ;gpio.c: 43: return;
-"43
-[e $UE 139  ]
-[; ;gpio.c: 44: }
+[; <"   GOTO LOOP ;# ">
+"41
+[; ;gpio.c: 44: return;
 "44
+[e $UE 139  ]
+[; ;gpio.c: 45: }
+"45
 [e :UE 139 ]
 }

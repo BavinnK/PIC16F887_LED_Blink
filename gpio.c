@@ -22,6 +22,7 @@ void main(void) {
   CLRF TRISD
   BCF STATUS,5
   CLRF 0x20
+  CLRF PORTD
 
   LOOP:
   BTFSC PORTB,0
@@ -34,7 +35,7 @@ void main(void) {
   MOVWF PORTD
 
   WAIT:
-  BTFSS PORTB,0
+  BTFSC PORTB,0
   GOTO WAIT
   GOTO LOOP  
     
