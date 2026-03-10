@@ -15,47 +15,32 @@ void main(void) {
     
 #asm
     MAIN_INIT:
-        BSF STATUS,6
-        BSF STATUS,5  ;we are at bank 3
-        CLRF ANSEL
-        CLRF ANSELH   ;we will clear all the bits in analog selection we dont want analog
-        BCF STATUS,6        
-        BSF STATUS,5  ;now we are in bank 1
-        BSF TRISB,0   ;we set RB0 as input
-        CLRF TRISD    ;we will set every bit on PORTD as output
-        BCF STATUS,5  ;we will return to bank 0
-        CLRF PORTD   
-        CLRF 0x20
-               
+    BCF STATUS,6
+    BCF STATUS,5        ;BANK0
+    CLRF TMR0           ;clear the counter
+    
+    BSF STATUS,5        ;BANK1
+    BCF OPTION_REG,5    ;we will use internal osc which is 4Mhz
+    BCF OPTION_REG,3    ;the pcs is assigned to timer0 itself not the watchdog
+    BSF OPTION_REG,0
+    BSF OPTION_REG,1
+    BSF OPTION_REG,2    ;now the pcs is 256 now each tick takes 256 us
+   
+    BCF TRISD,0         ;make RD0 as output
+    BCF STATUS,5        ;BANK0
+             
     MAIN_LOOP:
-        BTFSC PORTB,0   ;we will test RB0 if its set then dont skip, if its not set then skip
-        CALL INC_NUMBER
-        GOTO MAIN_LOOP
-                
-    INC_NUMBER:
-        INCF 0x20,F ;increment the data in 0x20 add
-        MOVLW 11
-        SUBWF 0x20,W
-        BTFSC STATUS,2
-        CLRF 0x20       
-        CALL DISPLAY
-    
-    
-    WAIT:
-        BTFSS PORTB,0
-        GOTO WAIT
-    
-        RETURN 
+    BTFSC INTCON,2
+    CALL DISPLAY
+    GOTO MAIN_LOOP
     
     DISPLAY:
-        MOVF 0x20,W
-        MOVWF PORTD
-        RETURN 
-    
-     
-    
-    
-    
+    BCF INTCON,2
+    MOVF PORTD,W
+    XORLW 0X1
+    MOVWF PORTD
+    RETURN
+ 
 #endasm
     
     return;
