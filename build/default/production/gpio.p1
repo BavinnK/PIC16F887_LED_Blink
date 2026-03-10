@@ -1552,26 +1552,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 "45
 [; <"         BTFSS PORTB,0 ;# ">
 "46
-[; <"         GOTO MAIN_LOOP ;# ">
-"47
 [; <"         GOTO WAIT ;# ">
+"47
 "48
-"49
 [; <"             RETURN ;# ">
+"49
 "50
-"51
 [; <"         DISPLAY: ;# ">
-"52
+"51
 [; <"         MOVF 0x20,W ;# ">
-"53
+"52
 [; <"         MOVWF PORTD ;# ">
-"54
+"53
 [; <"         RETURN ;# ">
-"55
-[; ;gpio.c: 62: return;
-"62
+"54
+[; ;gpio.c: 61: return;
+"61
 [e $UE 139  ]
-[; ;gpio.c: 63: }
-"63
+[; ;gpio.c: 62: }
+"62
 [e :UE 139 ]
 }

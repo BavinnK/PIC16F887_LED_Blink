@@ -43,7 +43,6 @@ void main(void) {
     
     WAIT:
         BTFSS PORTB,0
-        GOTO MAIN_LOOP
         GOTO WAIT
     
         RETURN 
