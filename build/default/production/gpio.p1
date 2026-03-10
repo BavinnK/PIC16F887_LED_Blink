@@ -1498,74 +1498,80 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _main ]
 [f ]
 "17
+[; <"     MAIN_INIT: ;# ">
 "18
-[; <"     BSF STATUS,6 ;# ">
+[; <"         BSF STATUS,6 ;# ">
 "19
-[; <"   BSF STATUS,5 ;# ">
+[; <"         BSF STATUS,5 ;we are at bank 3 ;# ">
 "20
+[; <"         CLRF ANSEL ;# ">
 "21
-[; <"    CLRF ANSEL ;# ">
+[; <"         CLRF ANSELH ;we will clear all the bits in analog selection we dont want analog ;# ">
 "22
-[; <"   CLRF ANSELH ;# ">
+[; <"         BCF STATUS,6 ;# ">
 "23
-[; <"   BCF STATUS,6 ;# ">
+[; <"         BSF STATUS,5 ;now we are in bank 1 ;# ">
 "24
-[; <"   BSF TRISB,0 ;# ">
+[; <"         BSF TRISB,0 ;we set RB0 as input ;# ">
 "25
-[; <"   CLRF TRISD ;# ">
+[; <"         CLRF TRISD ;we will set every bit on PORTD as output ;# ">
 "26
-[; <"   BCF STATUS,5 ;# ">
+[; <"         BCF STATUS,5 ;we will return to bank 0 ;# ">
 "27
-[; <"   CLRF 0x20 ;# ">
+[; <"         CLRF PORTD ;# ">
 "28
-[; <"   CLRF PORTD ;# ">
+[; <"         CLRF 0x20 ;# ">
 "29
 "30
-[; <"   LOOP: ;# ">
+[; <"                    MAIN_LOOP: ;# ">
 "31
-[; <"   BTFSC PORTB,0 ;# ">
+[; <"         BTFSC PORTB,0 ;we will test RB0 if its set then dont skip, if its not set then skip ;# ">
 "32
-[; <"   GOTO INC_CNTR ;# ">
+[; <"         CALL INC_NUMBER ;# ">
 "33
-[; <"   GOTO LOOP ;# ">
+[; <"         GOTO MAIN_LOOP ;# ">
 "34
 "35
-[; <"   INC_CNTR: ;# ">
+[; <"                     INC_NUMBER: ;# ">
 "36
-[; <"   INCF 0x20,F ;# ">
+[; <"         INCF 0x20,F ;increment the data in 0x20 add ;# ">
 "37
-[; <"   MOVLW 10 ;# ">
+[; <"         MOVLW 11 ;# ">
 "38
-[; <"   SUBWF 0x20,W ;# ">
+[; <"         SUBWF 0x20,W ;# ">
 "39
-[; <"   BTFSC STATUS,2 ;# ">
+[; <"         BTFSC STATUS,2 ;# ">
 "40
-[; <"   GOTO INC_RESET ;# ">
+[; <"         CLRF 0x20 ;# ">
 "41
-[; <"   MOVF 0x20,W ;# ">
+[; <"         CALL DISPLAY ;# ">
 "42
-[; <"   MOVWF PORTD ;# ">
 "43
 "44
-[; <"     WAIT: ;# ">
+[; <"             WAIT: ;# ">
 "45
-[; <"   BTFSC PORTB,0 ;# ">
+[; <"         BTFSS PORTB,0 ;# ">
 "46
-[; <"   GOTO WAIT ;# ">
+[; <"         GOTO MAIN_LOOP ;# ">
 "47
-[; <"   GOTO LOOP ;# ">
+[; <"         GOTO WAIT ;# ">
 "48
 "49
-[; <"   INC_RESET: ;# ">
+[; <"             RETURN ;# ">
 "50
-[; <"   CLRF 0x20 ;# ">
 "51
-[; <"   GOTO LOOP ;# ">
+[; <"         DISPLAY: ;# ">
 "52
-[; ;gpio.c: 55: return;
+[; <"         MOVF 0x20,W ;# ">
+"53
+[; <"         MOVWF PORTD ;# ">
+"54
+[; <"         RETURN ;# ">
 "55
+[; ;gpio.c: 62: return;
+"62
 [e $UE 139  ]
-[; ;gpio.c: 56: }
-"56
+[; ;gpio.c: 63: }
+"63
 [e :UE 139 ]
 }

@@ -14,41 +14,48 @@
 void main(void) {
     
 #asm
-  
-  BSF STATUS,6
-  BSF STATUS,5
- 
-  CLRF ANSEL
-  CLRF ANSELH
-  BCF STATUS,6
-  BSF TRISB,0
-  CLRF TRISD
-  BCF STATUS,5
-  CLRF 0x20
-  CLRF PORTD
-
-  LOOP:
-  BTFSC PORTB,0
-  GOTO INC_CNTR
-  GOTO LOOP
-
-  INC_CNTR:
-  INCF 0x20,F
-  MOVLW 10
-  SUBWF 0x20,W
-  BTFSC STATUS,2
-  GOTO INC_RESET
-  MOVF 0x20,W
-  MOVWF PORTD
-  
-  WAIT:
-  BTFSC PORTB,0
-  GOTO WAIT
-  GOTO LOOP
-
-  INC_RESET:
-  CLRF 0x20
-  GOTO LOOP
+    MAIN_INIT:
+        BSF STATUS,6
+        BSF STATUS,5  ;we are at bank 3
+        CLRF ANSEL
+        CLRF ANSELH   ;we will clear all the bits in analog selection we dont want analog
+        BCF STATUS,6        
+        BSF STATUS,5  ;now we are in bank 1
+        BSF TRISB,0   ;we set RB0 as input
+        CLRF TRISD    ;we will set every bit on PORTD as output
+        BCF STATUS,5  ;we will return to bank 0
+        CLRF PORTD   
+        CLRF 0x20
+               
+    MAIN_LOOP:
+        BTFSC PORTB,0   ;we will test RB0 if its set then dont skip, if its not set then skip
+        CALL INC_NUMBER
+        GOTO MAIN_LOOP
+                
+    INC_NUMBER:
+        INCF 0x20,F ;increment the data in 0x20 add
+        MOVLW 11
+        SUBWF 0x20,W
+        BTFSC STATUS,2
+        CLRF 0x20       
+        CALL DISPLAY
+    
+    
+    WAIT:
+        BTFSS PORTB,0
+        GOTO MAIN_LOOP
+        GOTO WAIT
+    
+        RETURN 
+    
+    DISPLAY:
+        MOVF 0x20,W
+        MOVWF PORTD
+        RETURN 
+    
+     
+    
+    
     
 #endasm
     
