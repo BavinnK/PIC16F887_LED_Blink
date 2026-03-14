@@ -21,6 +21,7 @@ PATH:=C:/Program Files (x86)/Microchip/MPLABX/v3.35/mplab_ide/mplab_ide/modules/
 # Path to java used to run MPLAB X when this makefile was created
 MP_JAVA_PATH="C:\Program Files (x86)\Microchip\MPLABX\v3.35\sys\java\jre1.8.0_91/bin/"
 OS_CURRENT="$(shell uname -s)"
+<<<<<<< HEAD
 MP_CC="C:\Program Files (x86)\Microchip\xc8\v1.36\bin\xc8.exe"
 # MP_CPPC is not defined
 # MP_BC is not defined
@@ -34,4 +35,19 @@ MP_CC_DIR="C:\Program Files (x86)\Microchip\xc8\v1.36\bin"
 MP_AS_DIR="C:\Program Files (x86)\Microchip\xc8\v1.36\bin"
 MP_LD_DIR="C:\Program Files (x86)\Microchip\xc8\v1.36\bin"
 # MP_AR_DIR is not defined
+=======
+# MP_CC is not defined
+# MP_CPPC is not defined
+# MP_BC is not defined
+MP_AS="C:\Program Files (x86)\Microchip\MPLABX\v3.35\mpasmx\mpasmx.exe"
+MP_LD="C:\Program Files (x86)\Microchip\MPLABX\v3.35\mpasmx\mplink.exe"
+MP_AR="C:\Program Files (x86)\Microchip\MPLABX\v3.35\mpasmx\mplib.exe"
+DEP_GEN=${MP_JAVA_PATH}java -jar "C:/Program Files (x86)/Microchip/MPLABX/v3.35/mplab_ide/mplab_ide/modules/../../bin/extractobjectdependencies.jar"
+# MP_CC_DIR is not defined
+# MP_CPPC_DIR is not defined
+# MP_BC_DIR is not defined
+MP_AS_DIR="C:\Program Files (x86)\Microchip\MPLABX\v3.35\mpasmx"
+MP_LD_DIR="C:\Program Files (x86)\Microchip\MPLABX\v3.35\mpasmx"
+MP_AR_DIR="C:\Program Files (x86)\Microchip\MPLABX\v3.35\mpasmx"
+>>>>>>> 3f5c2ce (so i moved from X8C compiler to MPASM compiler and transitioned from inline asm to full main.s pure assembly took me 2 hour to just run the program)
 # MP_BC_DIR is not defined

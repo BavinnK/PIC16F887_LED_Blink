@@ -3,10 +3,17 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
+<<<<<<< HEAD
             <name>cc_pic887_gpio</name>
             <creation-uuid>b487b5a8-b226-48bf-80ee-59d7840f575f</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
+=======
+            <name>CC_887_FULL_ASM</name>
+            <creation-uuid>3270fc49-53ab-4143-90b1-6f6dcb461f37</creation-uuid>
+            <make-project-type>0</make-project-type>
+            <c-extensions/>
+>>>>>>> 3f5c2ce (so i moved from X8C compiler to MPASM compiler and transitioned from inline asm to full main.s pure assembly took me 2 hour to just run the program)
             <cpp-extensions/>
             <header-extensions/>
             <asminc-extensions/>
